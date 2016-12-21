@@ -9,4 +9,4 @@
 ` textLoopView.setDatas(List<String> data)`
 
 ####设置监听事件
-` textLoopView.setItemOnClickListener()
+` textLoopView.setItemOnClickListener()`
