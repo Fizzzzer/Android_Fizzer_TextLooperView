@@ -5,7 +5,9 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -93,8 +95,19 @@ public class TextLoopView extends LinearLayout {
                 }
             });
         }
-        mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext,R.anim.text_loop_in));
-        mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext,R.anim.text_loop_out));
+//        mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(mContext,R.anim.text_loop_in));
+//        mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(mContext,R.anim.text_loop_out));
+
+        //使用代码添加动画
+        Animation anim_in = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0f
+                , Animation.RELATIVE_TO_PARENT, 0f, Animation.RELATIVE_TO_PARENT, 1.0f, Animation.RELATIVE_TO_PARENT, 0f);
+        anim_in.setDuration(300);
+        Animation anim_out = new TranslateAnimation(Animation.RELATIVE_TO_PARENT, 0f, Animation.RELATIVE_TO_PARENT, 0f
+                , Animation.RELATIVE_TO_PARENT, 0f, Animation.RELATIVE_TO_PARENT, -1.0f);
+        anim_out.setDuration(300);
+        mViewFlipper.setInAnimation(anim_in);
+        mViewFlipper.setOutAnimation(anim_out);
+
         mViewFlipper.startFlipping();
 
     }
